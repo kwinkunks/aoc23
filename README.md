@@ -2,6 +2,7 @@
 
 No frills Python, no tests, docs, `if __name__ == '__main__`, etc.
 
+**Spoilers follow.**
 
 ## Week 1
 
@@ -13,9 +14,9 @@ No frills Python, no tests, docs, `if __name__ == '__main__`, etc.
 - **Day 6: Wait For It** — Easy and (for me) very quick to solve. Part 2 seemed like it would be intractable but brute force did the trick in a few seconds. SLOC: 17.
 - **Day 7: Camel Cards** — A simplified poker game (no straight or flush), with wild cards in Part 2. My solution for Part 1 was fairly fun and compact, but Part 2 blew up quite a bit when I realized that the hand type was from the 'wild' hand, but the rank was from the 'real' hand (with adjusted strength for the wild card). SLOC: 62.
 
-Mostly fun. Weirdly this year I have only run my code on the given example once (and it passed, while the real data was not — classic).
+Mostly fun so far. Weirdly this year I have only run my code on the given example once (and it passed, while the real data was not — classic).
 
 
 ## Week 2
 
-- Coming soon!
+- **Day 8: Haunted Wasteland** — Fun, not too hard graph problem. Part 2 was again the classic too-expensive problem, but after only a bit of flailing (thinking I could find a loop), I realized I could count each path separately and find the [lowest common multiple](https://en.wikipedia.org/wiki/Least_common_multiple). SLOC: 24.

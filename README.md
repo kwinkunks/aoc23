@@ -20,3 +20,4 @@ Mostly fun so far. Weirdly this year I have only run my code on the given exampl
 ## Week 2
 
 - **Day 8: Haunted Wasteland** — Fun, not too hard graph problem. Part 2 was again the classic too-expensive problem, but after only a bit of flailing (thinking I could find a loop), I realized I could count each path separately and find the [lowest common multiple](https://en.wikipedia.org/wiki/Least_common_multiple). SLOC: 24.
+- **Day 9: Mirage Maintenance** — Cool prediction task with discrete derivatives and a sort of [Pascal's triangle](https://en.wikipedia.org/wiki/Pascal%27s_triangle) based on subtraction. Tripped over the 'cumulative difference' function a bit but overall today was one of the easy days. SLOC: 19.

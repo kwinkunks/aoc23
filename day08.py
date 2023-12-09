@@ -2,7 +2,7 @@ from pathlib import Path
 import re
 import math
 
-text = Path('./data/8.txt').read_text()
+text = Path('./data/08.txt').read_text()
 
 turns, node_text = text.split('\n\n')
 
@@ -13,7 +13,7 @@ for line in node_text.split('\n'):
     nodes[n] = (l, r)
 
 # Part 1.
-def atoz(node, is_target):
+def atoz(node, is_target) -> str:
     done, steps = 0, 0
     while not done:
         for turn in turns:
@@ -23,7 +23,7 @@ def atoz(node, is_target):
                 done = True
                 break
     return steps
-    
+
 print(atoz('AAA', lambda n: n=='ZZZ'))
 
 # Part 2.

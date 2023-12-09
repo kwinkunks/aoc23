@@ -1,6 +1,6 @@
 from pathlib import Path
 
-text = Path('./data/2.txt').read_text()
+text = Path('./data/02.txt').read_text()
 
 class Game:
 
@@ -16,10 +16,10 @@ class Game:
                 d[2] = int(b.groups(0)[0])
             self.rgb.append(tuple(d))
 
-    def max(self):
+    def max(self) -> int:
         return [max(rgb[i] for rgb in self.rgb) for i in (0, 1, 2)]
 
-    def power(self):
+    def power(self) -> int:
         max_ = self.max()
         return max_[0] * max_[1] * max_[2]
 

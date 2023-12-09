@@ -1,6 +1,6 @@
 from pathlib import Path
 
-text = Path('./data/6.txt').read_text()
+text = Path('./data/06.txt').read_text()
 
 _, *times = text.split('\n')[0].split()
 _, *recs = text.split('\n')[1].split()

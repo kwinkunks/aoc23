@@ -1,7 +1,8 @@
 from pathlib import Path
 from collections import Counter
+from typing import Callable
 
-text = Path('./data/7.txt').read_text()
+text = Path('./data/07.txt').read_text()
 data = [row.split() for row in text.split('\n')]
 hands = {a: int(b) for a, b in data}
 
@@ -17,7 +18,7 @@ def get_type(hand):
 
 # Rely on order, low to high type.
 TYPES = '12t3f45'
-def typeset(hands):
+def typeset(hands) -> dict[str, list]:
     typesets = {t: list() for t in TYPES}
     for hand in hands:
         typesets[get_type(hand)].append(hand)
@@ -25,14 +26,14 @@ def typeset(hands):
 
 # Ordering closure to use as sort key.
 STRENGTHS = "AKQJT98765432"
-def strength(wild=''):
-    def f(hand):
+def strength(wild: str='') -> Callable:
+    def f(hand: str) -> tuple[int]:
         strengths = STRENGTHS.replace(wild, '') + wild
         return tuple(strengths.find(c) for c in hand)
     return f
 
 # Rank.
-def rank(typesets, wild=''):
+def rank(typesets, wild='') -> list:
     all_hands = []
     for _, group in typesets.items():
         sort = sorted(group, key=strength(wild), reverse=True)
@@ -48,7 +49,7 @@ for i, hand in enumerate(rank(typeset(hands))):
 print(winnings)
 
 # Part 2.
-def best_permutation(hand, wild=''):
+def best_permutation(hand, wild='') -> str:
     perms = []
     for s in STRENGTHS.replace(wild, ''):
         perms.append(hand.replace(wild, s, 1))

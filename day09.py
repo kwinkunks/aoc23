@@ -1,6 +1,7 @@
 from pathlib import Path
+from typing import Callable
 
-text = Path('./data/9.txt').read_text()
+text = Path('./data/09.txt').read_text()
 
 # text = """0 3 6 9 12 15
 # 1 3 6 10 15 21
@@ -8,7 +9,10 @@ text = Path('./data/9.txt').read_text()
 
 histories = [list(map(int, row.split())) for row in text.split('\n')]
 
-def predict(history, prequel=False, f=sum):
+def predict(history: list[int],
+            prequel: bool=False,
+            f: Callable=sum
+    ) -> int:
     "f is cumulating function"
     X = [history[prequel-1]]
     while True:
@@ -20,7 +24,7 @@ def predict(history, prequel=False, f=sum):
 print(sum(map(predict, histories)))
 
 # Part 2.
-def cumsub(X):
+def cumsub(X: list) -> int:
     "Cumulative subtraction"
     result = 0
     for xi in reversed(X):

@@ -1,7 +1,7 @@
 from collections import defaultdict
 from pathlib import Path
 
-text = Path('./data/2.txt').read_text()
+text = Path('./data/03.txt').read_text()
 
 numbers = defaultdict(str)  # tuple: str (then int)
 parts = {}    # tuple: str
@@ -25,7 +25,7 @@ for r, row in enumerate(text.split()):
 
 offsets = [-1-1j, 0-1j, 1-1j, -1, 1, -1+1j, 0+1j, 1+1j]
 
-def neighbours(pos, n):
+def neighbours(pos, n) -> set:
     positions = set()
     for i, c in enumerate(n):
         for o in offsets:

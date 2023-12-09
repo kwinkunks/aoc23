@@ -1,6 +1,6 @@
 from pathlib import Path
 
-text = Path('./data/5.txt').read_text()
+text = Path('./data/05.txt').read_text()
 
 import re
 

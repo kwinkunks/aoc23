@@ -1,6 +1,6 @@
 from pathlib import Path
 
-text = Path('./data/4.txt').read_text()
+text = Path('./data/04.txt').read_text()
 
 class Card:
     def __init__(self, text, id):

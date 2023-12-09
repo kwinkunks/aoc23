@@ -2,7 +2,7 @@
 
 No frills Python, no tests, docs, `if __name__ == '__main__`, etc.
 
-**Spoilers follow.**
+⚠️ **Spoilers follow.**
 
 ## Week 1
 

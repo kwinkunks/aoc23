@@ -1,5 +1,4 @@
 from pathlib import Path
-import shapely
 
 text = Path('./data/10.txt').read_text()
 
@@ -33,17 +32,12 @@ while (not vertices) or grid.get(curr) != 'S':
     step = STEPS.get(symb, {-1:-1})[step]  # Annoying hack.
     curr += step
 
+vertices += vertices[:1]
+
 # Part 1.
 print(len(vertices) // 2)
 
 # Part 2.
-# Shoelace formula (sum cross products): way too high.
-# Use shapely and get area of polygon. Now what?
-# Check every point, sigh, so slow but it works!
-# Wait, there's Pick's theorem...
-
-P = shapely.Polygon(vertices)
-
 # Pick's theorem
 # https://en.wikipedia.org/wiki/Pick%27s_theorem
 # A = i + b/2 - 1
@@ -51,6 +45,14 @@ P = shapely.Polygon(vertices)
 # and   i is integer points
 # so    i = A + 1 - b/2
 
-print(int(P.area + 1 - len(vertices)//2))
+def shoelace(vertices):
+    area = 0.0
+    for p0, p1 in zip(vertices, vertices[1:]):
+        area += p1[0]*p0[1] - p0[0]*p1[1]
+    return area / 2
+
+area = shoelace(vertices)
+
+print(int(area + 1 - len(vertices)//2))
 
 # It works!! Noice.

@@ -2,17 +2,6 @@ from pathlib import Path
 
 text = Path('./data/14.txt').read_text()
 
-text_ = """O....#....
-O.OO#....#
-.....##...
-OO.#O....O
-.O.....O#.
-O.#..O.#.#
-..O..#O..O
-.......O..
-#....###..
-#OO..#...."""
-
 blocks, spheres = [], []
 for y, row in enumerate(text.split('\n')):
     for x, c in enumerate(row):
@@ -21,13 +10,10 @@ for y, row in enumerate(text.split('\n')):
         elif c == 'O':
             spheres.append(complex(x, y))
 
-all_cycles = 1_000_000_000
-cycles = 50
+cycles = 180  # Captures cyclicity, then extrapolate.
 
 def score(spheres, y):
     return sum((y + 1 - s.imag) for s in spheres)
-
-# print(spheres)
 
 scores = []
 for cycle in range(cycles):
@@ -46,25 +32,8 @@ for cycle in range(cycles):
                     moving += 1
         spheres = [s * 1j for s in spheres]
         blocks = [s * 1j for s in blocks]
-    # score_basis = max(s.imag for s in blocks)
     print('.', end='')
     scores.append(score(spheres, y))
 
 print(scores)
 print(score(spheres, y))
-# if False:
-#     for i in range(10):
-#         for j in range(10):
-#             x = '.'
-#             if complex(j, i) in spheres:
-#                 x = 'O'
-#             if complex(j, i) in blocks:
-#                 x = '#'
-#             print(x, end='')
-#         print('\n')
-
-# print(spheres, y)
-import matplotlib.pyplot as plt
-plt.plot(scores)
-plt.show()
-# 3968064

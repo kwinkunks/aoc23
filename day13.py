@@ -1,10 +1,10 @@
 from pathlib import Path
-from utils import levenshtein
 
 text = Path('./data/13.txt').read_text()
 
 def match(r1, r2, diff=0):
-    return levenshtein(''.join(r1), ''.join(r2)) == diff
+    if not diff: return ''.join(r1) == ''.join(r2) # 🤔
+    return sum(a != b for a, b in zip(''.join(r1), ''.join(r2))) == diff
 
 def find(rows, diff=0):
     last, seens, hline = '', [], 0
@@ -19,15 +19,15 @@ def find(rows, diff=0):
         last = row
     return hline
 
-for d in [0, 1]:  # Part 1, Part 2.
+for diff in [0, 1]:  # Part 1, Part 2.
     hlines, vlines = [], []
     for pattern in text.split('\n\n'):
         rows = pattern.split()
-        hlines.append(find(rows, d))
+        hlines.append(find(rows, diff))
         cols = []
         for i in range(len(rows[0])):
             cols.append(''.join([row[i] for row in rows]))
-        vlines.append(find(cols, d))
+        vlines.append(find(cols, diff))
 
     scores = []
     for h, v in zip(hlines, vlines):

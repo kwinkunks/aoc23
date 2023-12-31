@@ -1,4 +1,5 @@
 from pathlib import Path
+from functools import cache
 
 text = Path('./data/12.txt').read_text()
 
@@ -9,6 +10,7 @@ for row in text.splitlines():
     rles.append(''.join(r.split(',')))
 
 # Guessing brute force will work for part 1 but not part 2
+@cache
 def get_rle(row):
     this = ''
     rl = 0
@@ -22,6 +24,7 @@ def get_rle(row):
             rl = 0
     return this
 
+@cache
 def permutations(row):
     perms = [row]
     while any('?' in p for p in perms):
